@@ -1,0 +1,50 @@
+-- RESPOSTAS (colocar a pergunta, a resposta e o caminho até a resposta)
+
+-- 1 : Quantas vezes Natalie Portman foi indicada ao Oscar?  R: Três vezes | INSTRUÇÃO UTILIZADA: select * from movies where name like "%Natalie Portman%";
+
+-- 2 : Quantos Oscars Natalie Portman ganhou? R: Uma vez | INSTRUÇÃO UTILIZADA: select * from movies where name like "%Natalie Portman%" and winner= "true";
+
+-- 3 : Amy Adams já ganhou algum Oscar? R: Ela nunca ganhou| INSTRUÇÃO UTILIZADA: select * from movies where name like "%Amy Adams%" and winner= "true";
+
+-- 4 : A série de filmes Toy Story ganhou um Oscar em quais anos? R: Toy Story ganhou Oscar nos anos: 2011 - 2011 - 2020 | INSTRUÇÃO UTILIZADA: select * from movies where film like "%Toy Story%" and winner="true";
+
+-- 5 : Quem tem mais Oscars: a categoria "Melhor Ator" ou "Melhor Filme"? R: Melhor ator | INSTRUÇÃO UTILIZADA:
+-- select count(*) from movies where category like "%actress%" and winner = "true"; 177
+-- select count(*) from movies where category like "%picture%" and winner = "true"; 148 
+
+-- 6 : O primeiro Oscar para melhor Atriz foi para quem? Em que ano? R: Janet Gayor, 1928 | INSTRUÇÃO UTILIZADA: select * from movies where category like "%actress%" and winner="true";
+
+-- 7 : Na coluna/campo Winner, altere todos os valores com "True" para 1 e todos os valores "False" para 0. R: False 8038, True 2357 | INSTRUÇÃO UTILIZADA: update movies set winner = 1 where winner = "true"; - update movies set winner = 0 where winner = "false";
+
+-- 8 : Em qual edição do Oscar "Crash" ganhou o prêmio principal? R: Cerimônia edição 78 | INSTRUÇÃO UTILIZADA: select * from movies where film like "%Crash%" and winner="true" and category ="best picture";
+
+-- 9 : Bom... dê um Oscar para um filme que merece muito, mas não ganhou. R: Toy Story 4 | INSTRUÇÃO UTILIZADA:  update (movies, winner, year_ceremony) values ("Toy Story 4", 1, 2023);
+
+-- 10 : O filme Central do Brasil aparece no Oscar? R: Não | INSTRUÇÃO UTILIZADA:  select * from movies where name like "%Central do Brasil%";
+
+-- 11 : Inclua no banco 3 filmes que nunca nem foram nomeados ao Oscar, mas que na sua opinião, merecem. | INSTRUÇÃO UTILIZADA:
+SELECT * FROM movies where film like "%The Color Purple%"; para pesquisar se ja tem no banco de dados
+THE COLOR PURPLE : INSERT INTO movies (year_film, year_ceremony, ceremony, category, `name`, film, winner) 
+VALUES ('1985', '1986', '1', 'BEST PICTURE', 'Steven Spielberg', 'The Color Purple', 'False');
+AMERICAN HUSTLE : INSERT INTO movies (year_film, year_ceremony, ceremony, category, `name`, film, winner) 
+VALUES ('2013', '2014', '1', 'BEST PICTURE', 'David O. Russell', 'AMERICAN HUSTLE', 'False');
+GANGS OF NEW YORK : INSERT INTO movies (year_film, year_ceremony, ceremony, category, `name`, film, winner) 
+VALUES ('2002', '2003', '1', 'BEST PICTURE', 'Martin Scorsese', 'GANGS OF NEW YORK', 'False');
+
+-- 12 :  Crie uma nova categoria de premiação. Qualquer prêmio que você queira dar. Agora vamos dar esses prêmios aos filmes que você cadastrou na questão acima. R: |
+INTRUÇÃO UTILIZADA: THE COLOR PURPLE : INSERT INTO movies (year_film, year_ceremony, ceremony, category, `name`, film, winner) 
+VALUES ('1985', '1986', '1', 'MELHOR TRILHA SONORA', 'Steven Spielberg', 'The Color Purple', 'False');
+AMERICAN HUSTLE : INSERT INTO movies (year_film, year_ceremony, ceremony, category, `name`, film, winner) 
+VALUES ('2013', '2014', '1', 'MELHORES FIGURINOS', 'David O. Russell', 'AMERICAN HUSTLE', 'False');
+GANGS OF NEW YORK : INSERT INTO movies (year_film, year_ceremony, ceremony, category, `name`, film, winner) 
+VALUES ('2002', '2003', '1', 'MELHOR TÍTULO DE FILME', 'Martin Scorsese', 'GANGS OF NEW YORK', 'False');
+
+-- 13 : Qual foi o primeiro ano a ter um prêmio do Oscar? R: No ano de 1928 | INSTRUÇÃO UTILIZADA: select * from movies;
+ 
+-- 14 : Pensando no ano em que você nasceu: Qual foi o Oscar de melhor filme, Melhor Atriz e Melhor Diretor? R: 2005, ATRIZ: HILARY SWANK, DIRETOR: CLINT EASTWOOD, MELHOR FILME: Million Dollar Baby| Intrução utilizada: select * from movies where year_ceremony = 2005 and winner = "true";
+
+-- 15 : Agora procure 7 atrizes que não sejam americanas, europeias ou brasileiras.  Vamos cadastrá-los no nosso banco, mas eles ainda não ganharam o Oscar. Só foram nomeados. R: | Insrução utilizada:
+-- insert into movies (id_movie,year_film,year_ceremony,ceremony,category, ´name´, film, winner) values('10401', '2022', '2023', '1', 'actress','Song Hye-kyo','A Lição','true'); insert into movies (id_movie,year_film,year_ceremony,ceremony,category, ´name´, film, winner) values('10402', '2009', '2010', '1', 'actress', 'Kim Tae-hee','Iris','true'); insert into movies (id_movie,year_film,year_ceremony,ceremony,category, ´name´, film, winner) values('10403', '2009', '2010', '1', 'actress', 'Han Ga-in','Moon Embracing the Sun','true');insert into movies (id_movie,year_film,year_ceremony,ceremony,category, ´name´, film, winner) values('10404', '2020', '2021', '1', 'actress', 'Bae Su-ji','Apostando Alto','true');insert into movies (id_movie,year_film,year_ceremony,ceremony,category, ´name´, film, winner) values('10405', '2022', '2023', '1', 'actress', 'Heloísa Jorge','Sentença','true');
+insert into movies (id_movie,year_film,year_ceremony,ceremony,category, ´name´, film, winner) values('10404', '2020', '2021', '1', 'actress', 'Bae Su-ji','Apostando Alto','true');insert into movies (id_movie,year_film,year_ceremony,ceremony,category, ´name´, film, winner) values('10407', '2022', '2023', '1', 'actress', 'Shin Min-a','Amor e outros dramas','true'); (Atrizes adicionadas: Song Hye-kyo, Kim Tae-hee, Han Ga-in, Bae Su-ji, Heloísa Jorge, Park Eun-bin, Shin Min-a)
+
+-- 16 : Agora vamos falar da sua vida. Me diga o nome de uma pessoa que você admira e o que ela fez na sua vida. Agora me diz: Quê prêmio essa pessoa merece? R: Jesus, premio de melhor em tudo. 
